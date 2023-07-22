@@ -19,8 +19,10 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -42,6 +44,12 @@ class MainActivity : ComponentActivity() {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun LoginScreen(){
+    var userName by remember {
+        mutableStateOf("")
+    }
+    var password by remember {
+        mutableStateOf("")
+    }
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -53,25 +61,26 @@ fun LoginScreen(){
         Image(
             painter = painterResource(id = R.drawable.littlelemonlogo),
             contentDescription = "Logo image" ,
-            modifier = Modifier.padding(20.dp)
+            modifier = Modifier.padding(10.dp)
         )
 
         TextField(
-            value = "",
-            onValueChange = {  },
+            value = userName,
+            onValueChange = { newUsername -> userName = newUsername },
             label = { Text("Username") },
-            modifier = Modifier.padding(20.dp)
+            modifier = Modifier.padding(10.dp)
         )
         TextField(
-            value = "",
-            onValueChange = {  },
+            value = password,
+            onValueChange = { newPassword -> password = newPassword },
             label = { Text("Password") },
+            modifier = Modifier.padding(10.dp)
         )
         Button(
             onClick = { /*TODO*/ },
             colors = ButtonDefaults.buttonColors(Color.Gray),
             shape = RoundedCornerShape(10.dp),
-            modifier = Modifier.padding(20.dp)
+            modifier = Modifier.padding(10.dp)
             ) {
             Text(
                 text = stringResource(id = R.string.login),
