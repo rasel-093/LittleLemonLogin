@@ -24,6 +24,7 @@ import androidx.compose.runtime.currentCompositionLocalContext
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -47,10 +48,10 @@ class MainActivity : ComponentActivity() {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun LoginScreen(){
-    var userName by remember {
+    var userName by rememberSaveable() {
         mutableStateOf("")
     }
-    var password by remember {
+    var password by rememberSaveable() {
         mutableStateOf("")
     }
     val validUserName = "Darian"
